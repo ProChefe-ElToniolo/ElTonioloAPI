@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="pro_chefeModelStoreContainer" CdmEntityContainer="pro_chefeEntities">
+    <EntitySetMapping Name="categoria">
+      <EntityTypeMapping TypeName="pro_chefeModel.categoria">
+        <MappingFragment StoreEntitySet="categoria">
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="pro_chefeModel.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="cidade" ColumnName="cidade" />
+          <ScalarProperty Name="uf" ColumnName="uf" />
+          <ScalarProperty Name="bairro" ColumnName="bairro" />
+          <ScalarProperty Name="complemento" ColumnName="complemento" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="logradouro" ColumnName="logradouro" />
+          <ScalarProperty Name="cep" ColumnName="cep" />
+          <ScalarProperty Name="cpf" ColumnName="cpf" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ingrediente">
+      <EntityTypeMapping TypeName="pro_chefeModel.ingrediente">
+        <MappingFragment StoreEntitySet="ingrediente">
+          <ScalarProperty Name="estoque" ColumnName="estoque" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="itens_pedido">
+      <EntityTypeMapping TypeName="pro_chefeModel.itens_pedido">
+        <MappingFragment StoreEntitySet="itens_pedido">
+          <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+          <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+          <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pedidos">
+      <EntityTypeMapping TypeName="pro_chefeModel.pedidos">
+        <MappingFragment StoreEntitySet="pedidos">
+          <ScalarProperty Name="processamento" ColumnName="processamento" />
+          <ScalarProperty Name="id_entregador" ColumnName="id_entregador" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="produto">
+      <EntityTypeMapping TypeName="pro_chefeModel.produto">
+        <MappingFragment StoreEntitySet="produto">
+          <ScalarProperty Name="medida" ColumnName="medida" />
+          <ScalarProperty Name="imagem" ColumnName="imagem" />
+          <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+          <ScalarProperty Name="preco" ColumnName="preco" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="produto_ingrediente">
+      <EntityTypeMapping TypeName="pro_chefeModel.produto_ingrediente">
+        <MappingFragment StoreEntitySet="produto_ingrediente">
+          <ScalarProperty Name="preco_saida" ColumnName="preco_saida" />
+          <ScalarProperty Name="id_ingrediente" ColumnName="id_ingrediente" />
+          <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_usuario">
+      <EntityTypeMapping TypeName="pro_chefeModel.tipo_usuario">
+        <MappingFragment StoreEntitySet="tipo_usuario">
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="pro_chefeModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
