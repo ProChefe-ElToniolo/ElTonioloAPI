@@ -18,7 +18,7 @@ namespace ElTonioloAPI.Controllers
             using (pro_chefeEntities bd = new pro_chefeEntities())
             {
                 var categorias = from cat in bd.categoria select new { cat.id, cat.nome };
-                return categorias;
+                return categorias.ToList();
             }
         }
 

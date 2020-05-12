@@ -9,7 +9,7 @@ using System.Web.Http.Cors;
 
 namespace ElTonioloAPI.Controllers
 {
-    [EnableCors(origins:"htpp://localhost:8080", headers:"*", methods:"*")]
+    [EnableCors(origins:"*", headers:"*", methods:"*")]
     public class ClienteController : ApiController
     {
         // GET: api/Cliente
@@ -18,7 +18,7 @@ namespace ElTonioloAPI.Controllers
             using (pro_chefeEntities bd = new pro_chefeEntities())
             {
                 var clientes = from cli in bd.cliente select new { cli.id, cli.nome, cli.logradouro, cli.numero, cli.telefone, cli.cpf, cli.cep, cli.complemento, cli.bairro, cli.uf, cli.cidade };
-                return clientes;
+                return clientes.ToList();
             }
         }
 

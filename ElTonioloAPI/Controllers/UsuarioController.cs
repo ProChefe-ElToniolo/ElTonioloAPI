@@ -1,5 +1,6 @@
 ﻿using ElTonioloAPI.Models;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,16 +10,17 @@ using System.Web.Http.Cors;
 
 namespace ElTonioloAPI.Controllers
 {
-    [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UsuarioController : ApiController
     {
         // GET: api/Usuario
+        //pro_chefeEntities bd = new pro_chefeEntities();
         public IEnumerable<dynamic> Get()
         {
             using (pro_chefeEntities bd = new pro_chefeEntities())
             {
                 var usuarios = from user in bd.usuario select new { user.id, user.nome, user.email, user.senha, user.tipo_usuario };
-                return usuarios;
+                return usuarios.ToList();
             }
         }
 

@@ -18,7 +18,7 @@ namespace ElTonioloAPI.Controllers
             using (pro_chefeEntities bd = new pro_chefeEntities())
             {
                 var tipoUsuario = from tpUser in bd.tipo_usuario select new { tpUser.id, tpUser.nome };
-                return tipoUsuario;
+                return tipoUsuario.ToList(); 
             }
         }
 

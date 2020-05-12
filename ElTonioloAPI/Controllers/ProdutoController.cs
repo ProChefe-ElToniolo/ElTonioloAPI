@@ -9,7 +9,7 @@ using ElTonioloAPI.Models;
 
 namespace ElTonioloAPI.Controllers
 {
-    [EnableCors(origins: "http://localhost:8080", headers:"*", methods:"*")]
+    [EnableCors(origins: "*", headers:"*", methods:"*")]
     public class ProdutoController : ApiController
     {
         // GET: api/Produto
@@ -18,7 +18,7 @@ namespace ElTonioloAPI.Controllers
             using (pro_chefeEntities bd = new pro_chefeEntities())
             {
                 var produtos = from prod in bd.produto select new { prod.id, prod.nome, prod.preco, prod.medida, prod.id_categoria, prod.imagem };
-                return produtos;
+                return produtos.ToList();
             }
         }
 

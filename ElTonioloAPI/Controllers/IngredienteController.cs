@@ -18,7 +18,7 @@ namespace ElTonioloAPI.Controllers
             using (pro_chefeEntities bd = new pro_chefeEntities())
             {
                 var ingredientes = from ing in bd.ingrediente select new { ing.id, ing.nome };
-                return ingredientes;
+                return ingredientes.ToList();
             }
         }
 

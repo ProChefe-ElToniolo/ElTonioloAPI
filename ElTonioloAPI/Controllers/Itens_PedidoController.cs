@@ -18,7 +18,7 @@ namespace ElTonioloAPI.Controllers
             using (pro_chefeEntities bd = new pro_chefeEntities())
             {
                 var itemPedido = from itens in bd.itens_pedido select new { itens.id_pedido, itens.id_produto, itens.quantidade };
-                return itemPedido;
+                return itemPedido.ToList();
             }
         }
 
