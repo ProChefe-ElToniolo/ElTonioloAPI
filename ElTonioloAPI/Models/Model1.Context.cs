@@ -29,6 +29,7 @@ namespace ElTonioloAPI.Models
         public virtual DbSet<cliente> cliente { get; set; }
         public virtual DbSet<ingrediente> ingrediente { get; set; }
         public virtual DbSet<itens_pedido> itens_pedido { get; set; }
+        public virtual DbSet<medida> medida { get; set; }
         public virtual DbSet<pedidos> pedidos { get; set; }
         public virtual DbSet<produto> produto { get; set; }
         public virtual DbSet<produto_ingrediente> produto_ingrediente { get; set; }

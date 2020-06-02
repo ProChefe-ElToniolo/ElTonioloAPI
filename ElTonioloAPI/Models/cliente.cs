@@ -31,6 +31,8 @@ namespace ElTonioloAPI.Models
         public string bairro { get; set; }
         public string uf { get; set; }
         public string cidade { get; set; }
+        public string email { get; set; }
+        public string senha { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<pedidos> pedidos { get; set; }

@@ -12,6 +12,8 @@
     <EntitySetMapping Name="cliente">
       <EntityTypeMapping TypeName="pro_chefeModel.cliente">
         <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="cidade" ColumnName="cidade" />
           <ScalarProperty Name="uf" ColumnName="uf" />
           <ScalarProperty Name="bairro" ColumnName="bairro" />
@@ -29,6 +31,8 @@
     <EntitySetMapping Name="ingrediente">
       <EntityTypeMapping TypeName="pro_chefeModel.ingrediente">
         <MappingFragment StoreEntitySet="ingrediente">
+          <ScalarProperty Name="id_medida" ColumnName="id_medida" />
+          <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
           <ScalarProperty Name="estoque" ColumnName="estoque" />
           <ScalarProperty Name="nome" ColumnName="nome" />
           <ScalarProperty Name="id" ColumnName="id" />
@@ -44,13 +48,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="medida">
+      <EntityTypeMapping TypeName="pro_chefeModel.medida">
+        <MappingFragment StoreEntitySet="medida">
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="pedidos">
       <EntityTypeMapping TypeName="pro_chefeModel.pedidos">
         <MappingFragment StoreEntitySet="pedidos">
           <ScalarProperty Name="processamento" ColumnName="processamento" />
           <ScalarProperty Name="id_entregador" ColumnName="id_entregador" />
           <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
-          <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -58,7 +69,7 @@
     <EntitySetMapping Name="produto">
       <EntityTypeMapping TypeName="pro_chefeModel.produto">
         <MappingFragment StoreEntitySet="produto">
-          <ScalarProperty Name="medida" ColumnName="medida" />
+          <ScalarProperty Name="medida_tamanho" ColumnName="medida_tamanho" />
           <ScalarProperty Name="imagem" ColumnName="imagem" />
           <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
           <ScalarProperty Name="preco" ColumnName="preco" />

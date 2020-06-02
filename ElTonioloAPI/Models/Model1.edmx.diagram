@@ -5,21 +5,25 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="3ee920b37f194923b4ff133854277382" Name="Diagram1">
-        <EntityTypeShape EntityType="pro_chefeModel.categoria" Width="1.5" PointX="0.75" PointY="2.5" />
-        <EntityTypeShape EntityType="pro_chefeModel.cliente" Width="1.5" PointX="10" PointY="6.375" />
-        <EntityTypeShape EntityType="pro_chefeModel.ingrediente" Width="1.5" PointX="3" PointY="7.375" />
-        <EntityTypeShape EntityType="pro_chefeModel.itens_pedido" Width="1.5" PointX="5.25" PointY="5.125" />
-        <EntityTypeShape EntityType="pro_chefeModel.pedidos" Width="1.5" PointX="12.25" PointY="1.125" />
-        <EntityTypeShape EntityType="pro_chefeModel.produto" Width="1.5" PointX="3" PointY="1.625" />
-        <EntityTypeShape EntityType="pro_chefeModel.produto_ingrediente" Width="1.5" PointX="5.25" PointY="2.375" />
-        <EntityTypeShape EntityType="pro_chefeModel.tipo_usuario" Width="1.5" PointX="7.75" PointY="1.5" />
-        <EntityTypeShape EntityType="pro_chefeModel.usuario" Width="1.5" PointX="10" PointY="1" />
+        <EntityTypeShape EntityType="pro_chefeModel.categoria" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pro_chefeModel.cliente" Width="1.5" PointX="10" PointY="12.5" />
+        <EntityTypeShape EntityType="pro_chefeModel.ingrediente" Width="1.5" PointX="6" PointY="4.125" />
+        <EntityTypeShape EntityType="pro_chefeModel.itens_pedido" Width="1.5" PointX="5.25" PointY="8.75" />
+        <EntityTypeShape EntityType="pro_chefeModel.medida" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="pro_chefeModel.pedidos" Width="1.5" PointX="12.25" PointY="9.375" />
+        <EntityTypeShape EntityType="pro_chefeModel.produto" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="pro_chefeModel.produto_ingrediente" Width="1.5" PointX="8.25" PointY="4.625" />
+        <EntityTypeShape EntityType="pro_chefeModel.tipo_usuario" Width="1.5" PointX="7.75" PointY="9.625" />
+        <EntityTypeShape EntityType="pro_chefeModel.usuario" Width="1.5" PointX="10" PointY="9" />
+        <AssociationConnector Association="pro_chefeModel.FK_ingrediente_categoria" />
         <AssociationConnector Association="pro_chefeModel.FK_produto_categoria" />
         <AssociationConnector Association="pro_chefeModel.FK_cliente_delivery" />
+        <AssociationConnector Association="pro_chefeModel.FK_ingrediente_ingrediente" />
+        <AssociationConnector Association="pro_chefeModel.FK_ingrediente_medida" />
         <AssociationConnector Association="pro_chefeModel.FK_ingrediente_produto_ingrediente" />
         <AssociationConnector Association="pro_chefeModel.FK_itens_produto" />
+        <AssociationConnector Association="pro_chefeModel.FK_produto_medida" />
         <AssociationConnector Association="pro_chefeModel.FK_entregador_delivery" />
-        <AssociationConnector Association="pro_chefeModel.FK_produto_produto" />
         <AssociationConnector Association="pro_chefeModel.FK_produto_produto_ingrediente" />
         <AssociationConnector Association="pro_chefeModel.FK_tipo_usuario" />
         <AssociationConnector Association="pro_chefeModel.FK_usuario_usuario" />

@@ -15,7 +15,6 @@ namespace ElTonioloAPI.Models
     public partial class pedidos
     {
         public int id { get; set; }
-        public int id_pedido { get; set; }
         public int id_cliente { get; set; }
         public Nullable<int> id_entregador { get; set; }
         public bool processamento { get; set; }

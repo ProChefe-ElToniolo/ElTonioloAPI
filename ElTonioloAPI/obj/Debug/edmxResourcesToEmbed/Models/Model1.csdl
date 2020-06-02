@@ -5,11 +5,16 @@
     <EntitySet Name="cliente" EntityType="pro_chefeModel.cliente" />
     <EntitySet Name="ingrediente" EntityType="pro_chefeModel.ingrediente" />
     <EntitySet Name="itens_pedido" EntityType="pro_chefeModel.itens_pedido" />
+    <EntitySet Name="medida" EntityType="pro_chefeModel.medida" />
     <EntitySet Name="pedidos" EntityType="pro_chefeModel.pedidos" />
     <EntitySet Name="produto" EntityType="pro_chefeModel.produto" />
     <EntitySet Name="produto_ingrediente" EntityType="pro_chefeModel.produto_ingrediente" />
     <EntitySet Name="tipo_usuario" EntityType="pro_chefeModel.tipo_usuario" />
     <EntitySet Name="usuario" EntityType="pro_chefeModel.usuario" />
+    <AssociationSet Name="FK_ingrediente_categoria" Association="pro_chefeModel.FK_ingrediente_categoria">
+      <End Role="categoria" EntitySet="categoria" />
+      <End Role="ingrediente" EntitySet="ingrediente" />
+    </AssociationSet>
     <AssociationSet Name="FK_produto_categoria" Association="pro_chefeModel.FK_produto_categoria">
       <End Role="categoria" EntitySet="categoria" />
       <End Role="produto" EntitySet="produto" />
@@ -17,6 +22,14 @@
     <AssociationSet Name="FK_cliente_delivery" Association="pro_chefeModel.FK_cliente_delivery">
       <End Role="cliente" EntitySet="cliente" />
       <End Role="pedidos" EntitySet="pedidos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ingrediente_ingrediente" Association="pro_chefeModel.FK_ingrediente_ingrediente">
+      <End Role="ingrediente" EntitySet="ingrediente" />
+      <End Role="ingrediente1" EntitySet="ingrediente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ingrediente_medida" Association="pro_chefeModel.FK_ingrediente_medida">
+      <End Role="medida" EntitySet="medida" />
+      <End Role="ingrediente" EntitySet="ingrediente" />
     </AssociationSet>
     <AssociationSet Name="FK_ingrediente_produto_ingrediente" Association="pro_chefeModel.FK_ingrediente_produto_ingrediente">
       <End Role="ingrediente" EntitySet="ingrediente" />
@@ -26,13 +39,13 @@
       <End Role="produto" EntitySet="produto" />
       <End Role="itens_pedido" EntitySet="itens_pedido" />
     </AssociationSet>
+    <AssociationSet Name="FK_produto_medida" Association="pro_chefeModel.FK_produto_medida">
+      <End Role="medida" EntitySet="medida" />
+      <End Role="produto" EntitySet="produto" />
+    </AssociationSet>
     <AssociationSet Name="FK_entregador_delivery" Association="pro_chefeModel.FK_entregador_delivery">
       <End Role="usuario" EntitySet="usuario" />
       <End Role="pedidos" EntitySet="pedidos" />
-    </AssociationSet>
-    <AssociationSet Name="FK_produto_produto" Association="pro_chefeModel.FK_produto_produto">
-      <End Role="produto" EntitySet="produto" />
-      <End Role="produto1" EntitySet="produto" />
     </AssociationSet>
     <AssociationSet Name="FK_produto_produto_ingrediente" Association="pro_chefeModel.FK_produto_produto_ingrediente">
       <End Role="produto" EntitySet="produto" />
@@ -53,6 +66,7 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ingrediente" Relationship="pro_chefeModel.FK_ingrediente_categoria" FromRole="categoria" ToRole="ingrediente" />
     <NavigationProperty Name="produto" Relationship="pro_chefeModel.FK_produto_categoria" FromRole="categoria" ToRole="produto" />
   </EntityType>
   <EntityType Name="cliente">
@@ -70,6 +84,8 @@
     <Property Name="bairro" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="uf" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="cidade" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="senha" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="pedidos" Relationship="pro_chefeModel.FK_cliente_delivery" FromRole="cliente" ToRole="pedidos" />
   </EntityType>
   <EntityType Name="ingrediente">
@@ -79,6 +95,12 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nome" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
     <Property Name="estoque" Type="Int32" />
+    <Property Name="id_categoria" Type="Int32" />
+    <Property Name="id_medida" Type="Int32" />
+    <NavigationProperty Name="categoria" Relationship="pro_chefeModel.FK_ingrediente_categoria" FromRole="ingrediente" ToRole="categoria" />
+    <NavigationProperty Name="ingrediente1" Relationship="pro_chefeModel.FK_ingrediente_ingrediente" FromRole="ingrediente" ToRole="ingrediente1" />
+    <NavigationProperty Name="ingrediente2" Relationship="pro_chefeModel.FK_ingrediente_ingrediente" FromRole="ingrediente1" ToRole="ingrediente" />
+    <NavigationProperty Name="medida" Relationship="pro_chefeModel.FK_ingrediente_medida" FromRole="ingrediente" ToRole="medida" />
     <NavigationProperty Name="produto_ingrediente" Relationship="pro_chefeModel.FK_ingrediente_produto_ingrediente" FromRole="ingrediente" ToRole="produto_ingrediente" />
   </EntityType>
   <EntityType Name="itens_pedido">
@@ -91,12 +113,20 @@
     <Property Name="quantidade" Type="Int32" Nullable="false" />
     <NavigationProperty Name="produto" Relationship="pro_chefeModel.FK_itens_produto" FromRole="itens_pedido" ToRole="produto" />
   </EntityType>
+  <EntityType Name="medida">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ingrediente" Relationship="pro_chefeModel.FK_ingrediente_medida" FromRole="medida" ToRole="ingrediente" />
+    <NavigationProperty Name="produto" Relationship="pro_chefeModel.FK_produto_medida" FromRole="medida" ToRole="produto" />
+  </EntityType>
   <EntityType Name="pedidos">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="id_pedido" Type="Int32" Nullable="false" />
     <Property Name="id_cliente" Type="Int32" Nullable="false" />
     <Property Name="id_entregador" Type="Int32" />
     <Property Name="processamento" Type="Boolean" Nullable="false" />
@@ -113,11 +143,10 @@
     <Property Name="preco" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
     <Property Name="id_categoria" Type="Int32" Nullable="false" />
     <Property Name="imagem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="medida" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="medida_tamanho" Type="Int32" />
     <NavigationProperty Name="categoria" Relationship="pro_chefeModel.FK_produto_categoria" FromRole="produto" ToRole="categoria" />
     <NavigationProperty Name="itens_pedido" Relationship="pro_chefeModel.FK_itens_produto" FromRole="produto" ToRole="itens_pedido" />
-    <NavigationProperty Name="produto1" Relationship="pro_chefeModel.FK_produto_produto" FromRole="produto" ToRole="produto1" />
-    <NavigationProperty Name="produto2" Relationship="pro_chefeModel.FK_produto_produto" FromRole="produto1" ToRole="produto" />
+    <NavigationProperty Name="medida" Relationship="pro_chefeModel.FK_produto_medida" FromRole="produto" ToRole="medida" />
     <NavigationProperty Name="produto_ingrediente" Relationship="pro_chefeModel.FK_produto_produto_ingrediente" FromRole="produto" ToRole="produto_ingrediente" />
   </EntityType>
   <EntityType Name="produto_ingrediente">
@@ -153,6 +182,20 @@
     <NavigationProperty Name="usuario1" Relationship="pro_chefeModel.FK_usuario_usuario" FromRole="usuario" ToRole="usuario1" />
     <NavigationProperty Name="usuario2" Relationship="pro_chefeModel.FK_usuario_usuario" FromRole="usuario1" ToRole="usuario" />
   </EntityType>
+  <Association Name="FK_ingrediente_categoria">
+    <End Type="pro_chefeModel.categoria" Role="categoria" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="pro_chefeModel.ingrediente" Role="ingrediente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoria">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ingrediente">
+        <PropertyRef Name="id_categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_produto_categoria">
     <End Type="pro_chefeModel.categoria" Role="categoria" Multiplicity="1" />
     <End Type="pro_chefeModel.produto" Role="produto" Multiplicity="*" />
@@ -174,6 +217,30 @@
       </Principal>
       <Dependent Role="pedidos">
         <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ingrediente_ingrediente">
+    <End Type="pro_chefeModel.ingrediente" Role="ingrediente" Multiplicity="1" />
+    <End Type="pro_chefeModel.ingrediente" Role="ingrediente1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ingrediente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ingrediente1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ingrediente_medida">
+    <End Type="pro_chefeModel.medida" Role="medida" Multiplicity="0..1" />
+    <End Type="pro_chefeModel.ingrediente" Role="ingrediente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medida">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ingrediente">
+        <PropertyRef Name="id_medida" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -201,6 +268,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_produto_medida">
+    <End Type="pro_chefeModel.medida" Role="medida" Multiplicity="0..1" />
+    <End Type="pro_chefeModel.produto" Role="produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medida">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="produto">
+        <PropertyRef Name="medida_tamanho" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_entregador_delivery">
     <End Type="pro_chefeModel.usuario" Role="usuario" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -212,18 +291,6 @@
       </Principal>
       <Dependent Role="pedidos">
         <PropertyRef Name="id_entregador" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_produto_produto">
-    <End Type="pro_chefeModel.produto" Role="produto" Multiplicity="1" />
-    <End Type="pro_chefeModel.produto" Role="produto1" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="produto">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="produto1">
-        <PropertyRef Name="id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

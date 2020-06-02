@@ -17,7 +17,7 @@ namespace ElTonioloAPI.Controllers
         {
             using (pro_chefeEntities bd = new pro_chefeEntities())
             {
-                var produtos = from prod in bd.produto select new { prod.id, prod.nome, prod.preco, prod.medida, prod.id_categoria, prod.imagem };
+                var produtos = from prod in bd.produto select new { prod.id, prod.descricao, prod.nome, prod.preco, prod.medida_tamanho, prod.id_categoria, prod.imagem, categoriaProd = prod.categoria.nome, nomeMedida = prod.medida.nome };
                 return produtos.ToList();
             }
         }
@@ -50,6 +50,7 @@ namespace ElTonioloAPI.Controllers
                 alterar.preco = prod.preco;
                 alterar.id_categoria = prod.id_categoria;
                 alterar.imagem = prod.imagem;
+                alterar.medida_tamanho = prod.medida_tamanho;
                 bd.SaveChanges();
                 return "alterado com sucesso";
             }
@@ -59,8 +60,9 @@ namespace ElTonioloAPI.Controllers
         public string Delete(int id)
         {
             using (pro_chefeEntities bd = new pro_chefeEntities())
-            {
-                bd.produto.Remove(bd.produto.Find(id));
+            { 
+                produto deletar = bd.produto.Find(id);
+                bd.produto.Remove(deletar);
                 bd.SaveChanges();
                 return "Deletado com sucesso!";
             }

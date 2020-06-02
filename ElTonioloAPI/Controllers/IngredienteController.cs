@@ -17,7 +17,8 @@ namespace ElTonioloAPI.Controllers
         {
             using (pro_chefeEntities bd = new pro_chefeEntities())
             {
-                var ingredientes = from ing in bd.ingrediente select new { ing.id, ing.nome };
+                var ingredientes = from ing in bd.ingrediente select new { ing.id, ing.nome, ing.estoque, ing.id_categoria, nomeCategoria = ing.categoria.nome, ing.id_medida, nomeMedida = ing.medida.nome};
+                //nomeCargo = user.cargo.nome
                 return ingredientes.ToList();
             }
         }
@@ -46,6 +47,9 @@ namespace ElTonioloAPI.Controllers
             {
                 ingrediente alterar = bd.ingrediente.Find(id);
                 alterar.nome = ing.nome;
+                alterar.id_categoria = ing.id_categoria;
+                alterar.estoque = ing.estoque;
+                alterar.id_medida = ing.id_medida;
                 bd.SaveChanges();
                 return "alterado com sucesso";
             }

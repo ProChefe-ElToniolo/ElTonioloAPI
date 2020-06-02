@@ -27,13 +27,12 @@ namespace ElTonioloAPI.Models
         public decimal preco { get; set; }
         public int id_categoria { get; set; }
         public string imagem { get; set; }
-        public string medida { get; set; }
+        public Nullable<int> medida_tamanho { get; set; }
     
         public virtual categoria categoria { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<itens_pedido> itens_pedido { get; set; }
-        public virtual produto produto1 { get; set; }
-        public virtual produto produto2 { get; set; }
+        public virtual medida medida { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<produto_ingrediente> produto_ingrediente { get; set; }
     }

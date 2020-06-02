@@ -17,7 +17,7 @@ namespace ElTonioloAPI.Controllers
         {
             using (pro_chefeEntities bd = new pro_chefeEntities())
             {
-                var clientes = from cli in bd.cliente select new { cli.id, cli.nome, cli.logradouro, cli.numero, cli.telefone, cli.cpf, cli.cep, cli.complemento, cli.bairro, cli.uf, cli.cidade };
+                var clientes = from cli in bd.cliente select new { cli.email, cli.senha, cli.id, cli.nome, cli.logradouro, cli.numero, cli.telefone, cli.cpf, cli.cep, cli.complemento, cli.bairro, cli.uf, cli.cidade };
                 return clientes.ToList();
             }
         }
@@ -55,6 +55,8 @@ namespace ElTonioloAPI.Controllers
                 alterar.bairro = cliente.bairro;
                 alterar.uf = cliente.uf;
                 alterar.cidade = cliente.cidade;
+                alterar.email = cliente.email;
+                alterar.senha = cliente.email;
                 bd.SaveChanges();
                 return "Alterado com sucesso";
             }

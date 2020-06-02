@@ -17,12 +17,15 @@ namespace ElTonioloAPI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public categoria()
         {
+            this.ingrediente = new HashSet<ingrediente>();
             this.produto = new HashSet<produto>();
         }
     
         public int id { get; set; }
         public string nome { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ingrediente> ingrediente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<produto> produto { get; set; }
     }

@@ -12,25 +12,21 @@ namespace ElTonioloAPI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ingrediente
+    public partial class medida
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ingrediente()
+        public medida()
         {
-            this.produto_ingrediente = new HashSet<produto_ingrediente>();
+            this.ingrediente = new HashSet<ingrediente>();
+            this.produto = new HashSet<produto>();
         }
     
         public int id { get; set; }
         public string nome { get; set; }
-        public Nullable<int> estoque { get; set; }
-        public Nullable<int> id_categoria { get; set; }
-        public Nullable<int> id_medida { get; set; }
     
-        public virtual categoria categoria { get; set; }
-        public virtual ingrediente ingrediente1 { get; set; }
-        public virtual ingrediente ingrediente2 { get; set; }
-        public virtual medida medida { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<produto_ingrediente> produto_ingrediente { get; set; }
+        public virtual ICollection<ingrediente> ingrediente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<produto> produto { get; set; }
     }
 }
