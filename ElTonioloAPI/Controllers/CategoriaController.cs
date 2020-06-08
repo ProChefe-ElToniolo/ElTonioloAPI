@@ -12,7 +12,7 @@ namespace ElTonioloAPI.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CategoriaController : ApiController
     {
-        // GET: api/Categoria
+        // GET: ccc
         public IEnumerable<dynamic> Get()
         {
             using (pro_chefeEntities bd = new pro_chefeEntities())
@@ -56,7 +56,7 @@ namespace ElTonioloAPI.Controllers
         {
             using (pro_chefeEntities bd = new pro_chefeEntities())
             {
-                bd.cliente.Remove(bd.cliente.Find(id));
+                bd.categoria.Remove(bd.categoria.Find(id));
                 bd.SaveChanges();
                 return "Deletado com sucesso";
             }
