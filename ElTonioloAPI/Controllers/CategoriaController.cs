@@ -12,7 +12,7 @@ namespace ElTonioloAPI.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CategoriaController : ApiController
     {
-        // GET: api/Categoria
+        // GET: ccc
         public IEnumerable<dynamic> Get()
         {
             using (pro_chefeEntities bd = new pro_chefeEntities())
