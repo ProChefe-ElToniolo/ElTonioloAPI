@@ -119,6 +119,7 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="qnt_sabores" Type="Int32" />
     <NavigationProperty Name="ingrediente" Relationship="pro_chefeModel.FK_ingrediente_medida" FromRole="medida" ToRole="ingrediente" />
     <NavigationProperty Name="produto" Relationship="pro_chefeModel.FK_produto_medida" FromRole="medida" ToRole="produto" />
   </EntityType>
@@ -197,7 +198,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_produto_categoria">
-    <End Type="pro_chefeModel.categoria" Role="categoria" Multiplicity="1" />
+    <End Type="pro_chefeModel.categoria" Role="categoria" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="pro_chefeModel.produto" Role="produto" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="categoria">
@@ -295,7 +298,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_produto_produto_ingrediente">
-    <End Type="pro_chefeModel.produto" Role="produto" Multiplicity="1" />
+    <End Type="pro_chefeModel.produto" Role="produto" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="pro_chefeModel.produto_ingrediente" Role="produto_ingrediente" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="produto">

@@ -9,7 +9,7 @@ using System.Web.Http.Cors;
 
 namespace ElTonioloAPI.Controllers
 {
-    [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class IngredienteController : ApiController
     {
         // GET: api/Ingrediente

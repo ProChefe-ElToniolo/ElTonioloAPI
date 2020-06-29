@@ -56,8 +56,8 @@ namespace ElTonioloAPI.Controllers
         {
             using (pro_chefeEntities bd = new pro_chefeEntities())
             {
-                bd.cliente.Remove(bd.cliente.Find(id));
-                bd.SaveChanges();
+                bd.categoria.Remove(bd.categoria.Find(id));
+                 bd.SaveChanges();
                 return "Deletado com sucesso";
             }
         }

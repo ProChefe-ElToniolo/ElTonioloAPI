@@ -51,6 +51,7 @@
     <EntitySetMapping Name="medida">
       <EntityTypeMapping TypeName="pro_chefeModel.medida">
         <MappingFragment StoreEntitySet="medida">
+          <ScalarProperty Name="qnt_sabores" ColumnName="qnt_sabores" />
           <ScalarProperty Name="nome" ColumnName="nome" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>

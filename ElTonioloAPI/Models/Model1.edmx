@@ -55,6 +55,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="qnt_sabores" Type="int" />
         </EntityType>
         <EntityType Name="pedidos">
           <Key>
@@ -192,7 +193,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_produto_categoria">
-          <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+          <End Role="categoria" Type="Self.categoria" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="produto" Type="Self.produto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="categoria">
@@ -216,7 +219,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_produto_produto_ingrediente">
-          <End Role="produto" Type="Self.produto" Multiplicity="1" />
+          <End Role="produto" Type="Self.produto" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="produto_ingrediente" Type="Self.produto_ingrediente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="produto">
@@ -434,6 +439,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="qnt_sabores" Type="Int32" />
           <NavigationProperty Name="ingrediente" Relationship="pro_chefeModel.FK_ingrediente_medida" FromRole="medida" ToRole="ingrediente" />
           <NavigationProperty Name="produto" Relationship="pro_chefeModel.FK_produto_medida" FromRole="medida" ToRole="produto" />
         </EntityType>
@@ -512,7 +518,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_produto_categoria">
-          <End Type="pro_chefeModel.categoria" Role="categoria" Multiplicity="1" />
+          <End Type="pro_chefeModel.categoria" Role="categoria" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="pro_chefeModel.produto" Role="produto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="categoria">
@@ -610,7 +618,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_produto_produto_ingrediente">
-          <End Type="pro_chefeModel.produto" Role="produto" Multiplicity="1" />
+          <End Type="pro_chefeModel.produto" Role="produto" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="pro_chefeModel.produto_ingrediente" Role="produto_ingrediente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="produto">
@@ -701,6 +711,7 @@
           <EntitySetMapping Name="medida">
             <EntityTypeMapping TypeName="pro_chefeModel.medida">
               <MappingFragment StoreEntitySet="medida">
+                <ScalarProperty Name="qnt_sabores" ColumnName="qnt_sabores" />
                 <ScalarProperty Name="nome" ColumnName="nome" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

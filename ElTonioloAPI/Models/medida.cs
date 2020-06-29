@@ -23,6 +23,7 @@ namespace ElTonioloAPI.Models
     
         public int id { get; set; }
         public string nome { get; set; }
+        public Nullable<int> qnt_sabores { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ingrediente> ingrediente { get; set; }

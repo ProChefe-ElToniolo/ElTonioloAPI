@@ -35,7 +35,7 @@ namespace ElTonioloAPI.Controllers
             {
                 bd.produto.Add(prod);
                 bd.SaveChanges();
-                return "postado com sucesso!";
+                return prod.id.ToString();
             }
         }
 

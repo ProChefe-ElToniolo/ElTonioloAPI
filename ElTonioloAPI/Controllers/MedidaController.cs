@@ -9,7 +9,7 @@ using System.Web.Http.Cors;
 
 namespace ElTonioloAPI.Controllers
 {
-    [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class MedidaController : ApiController
     {
         // GET: api/Medida
@@ -17,7 +17,7 @@ namespace ElTonioloAPI.Controllers
         {
             using (pro_chefeEntities bd = new pro_chefeEntities())
             {
-                var medidas = from med in bd.medida select new { med.id, med.nome };
+                var medidas = from med in bd.medida select new { med.id, med.nome, med.qnt_sabores };
                 //nomeCargo = user.cargo.nome
                 return medidas.ToList();
             }
@@ -47,6 +47,7 @@ namespace ElTonioloAPI.Controllers
             {
                 medida alterar = bd.medida.Find(id);
                 alterar.nome = med.nome;
+                alterar.qnt_sabores = med.qnt_sabores;
                 bd.SaveChanges();
                 return "alterado com sucesso";
             }

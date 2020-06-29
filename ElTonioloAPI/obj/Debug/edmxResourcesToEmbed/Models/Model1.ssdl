@@ -50,6 +50,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="qnt_sabores" Type="int" />
   </EntityType>
   <EntityType Name="pedidos">
     <Key>
@@ -187,7 +188,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_produto_categoria">
-    <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+    <End Role="categoria" Type="Self.categoria" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="produto" Type="Self.produto" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="categoria">
@@ -211,7 +214,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_produto_produto_ingrediente">
-    <End Role="produto" Type="Self.produto" Multiplicity="1" />
+    <End Role="produto" Type="Self.produto" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="produto_ingrediente" Type="Self.produto_ingrediente" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="produto">
